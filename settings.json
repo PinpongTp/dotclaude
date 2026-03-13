@@ -1,0 +1,45 @@
+{
+  "statusLine": {
+    "type": "command",
+    "command": "~/.claude/statusline.sh"
+  },
+  "permissions": {
+    "allow": [
+      "Bash(git commit*)",
+      "Bash(git add *)",
+      "Bash(git * main)",
+      "Bash(* --version)",
+      "Bash(* --help *)",
+      "Bash(npm run *)",
+      "Bash(npm install *)",
+      "Bash(npm i *)",
+      "Bash(npm test *)",
+      "Bash(jest *)",
+      "Bash(npm run test:*)",
+      "Bash(docker run *)",
+      "Bash(docker build *)",
+      "Bash(docker compose *)",
+      "Bash(psql * select *)",
+      "Bash(psql * SELECT *)",
+      "Bash(cd * npx nest build *)",
+      "Bash(cd * npx next build *)"
+    ],
+    "deny": [
+      "Bash(rm -rf *)",
+      "Bash(* > *)",
+      "Bash(* >> *)",
+      "Bash(* | *)",
+      "Bash(* && *)",
+      "Bash(* ; *)",
+      "Bash(* & *)",
+      "Bash(* `*` *)",
+      "Bash(git push *)"
+    ]
+  },
+  "enabledPlugins": {
+    "typescript-lsp@claude-plugins-official": true,
+    "playwright@claude-plugins-official": false
+  },
+  "effortLevel": "low",
+  "skipDangerousModePermissionPrompt": true
+}
