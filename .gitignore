@@ -1,0 +1,25 @@
+# Cache & temporary
+cache/
+paste-cache/
+shell-snapshots/
+
+# Session & history
+sessions/
+history.jsonl
+file-history/
+
+# IDE integration
+ide/
+
+# Backups
+backups/
+
+# Plans & tasks (conversation-scoped)
+plans/
+tasks/
+
+# Projects (local state)
+projects/
+
+# Plugins
+plugins/
