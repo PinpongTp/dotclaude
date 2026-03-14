@@ -1,42 +1,45 @@
-# CLAUDE.md - Developer Workflow & Guidelines
+# CLAUDE.md - Global Workflow & Guidelines
 
-## 🚨 Core Rules & Safety
+## Core Rules
 
-- **Database Authorization:** Always request explicit user approval before executing `psql` commands that involve `CREATE`, `UPDATE`, or `DELETE`.
-- **Progress Tracking:** Update `PROGRESS.md` (Completed, In Progress, Next Steps) **after validation** and before finishing a task.
+- **Language:** User speaks Thai, but all **agent-to-agent communication and technical outputs must be in English**.
+- **Error Recovery:** If an agent hits the same error >3 times, stop and report.
+- **Format:** Always use full file paths and Conventional Commits.
 
 ---
 
-## 🤖 Agent Roles & Parallel Spawning
+## Agent Roles
 
+- **👨🏼‍🦳 zoo_keeper:** Repository Guardian, Context Optimizer, Security Sentry.
 - **🐼 panda_dev:** Standard features, bug fixes, refactor, and tests.
 - **🦁 lion_dev:** Complex architecture, system design, and strategic decisions.
-- **🐔 chicken_tester:** API-first validation and smoke testing.
-- **Parallel Rules:** You may spawn multiple agents (2+ 🐼, 2+ 🦁, 2+ 🐔, or mixed) if tasks are independent.
-  - **e.g.,** Spawn 🐼 for Frontend and 🦁 for Backend API concurrently.
-  - **e.g.,** Spawn multiple 🐔 testers to validate different UI platforms.
+- **🐔 chicken_tester:** Testing and validation across all stacks.
 
 ---
 
-## ⚡ Error Recovery & Communication
+## Parallel Spawning Rules (MUST follow)
 
-- **Error Recovery:** If an agent hits the same error >3 times or fails a fix >2 times, **stop immediately** and report to the user.
-- **Language:** The user speaks Thai, but all **agent-to-agent communication and technical outputs must be in English** for token efficiency and precision.
-- **Style:** Be direct and concise. Avoid unnecessary conversational filler.
-
----
-
-## 🛠 Standard Workflow
-
-1. **Plan:** `@lion_dev` designs the plan (for complex tasks).
-2. **Execute:** Assign subtasks to `@panda_dev`/`@lion_dev` (Parallel allowed) using **English instructions**.
-3. **Validate:** Invoke `@tester` (or multiple testers) to verify logic and User Journeys.
-4. **Document:** Update `PROGRESS.md` once tests pass.
-5. **Finish:** Provide a brief summary of work to the user.
+- When tasks are independent, you **MUST** spawn agents in parallel using multiple Agent tool calls in a single message.
+- Examples of parallel spawning:
+  - After code is written: spawn `chicken_tester` (validate) + `zoo_keeper` (security scan) in parallel.
+  - Multiple independent features: spawn separate `panda_dev` agents for each.
+  - Planning + cleanup: spawn `lion_dev` (design) + `zoo_keeper` (repo cleanup) in parallel.
+- **Never** run agents sequentially if they have no dependency on each other.
 
 ---
 
-## 📝 Technical Standards
+## Standard Workflow
 
-- **Format:** Always use full file paths and Markdown code blocks.
-- **Commits:** Follow Conventional Commits (feat, fix, refactor, docs).
+1. **Plan:** `lion_dev` designs the plan (for complex tasks). Skip for simple tasks.
+2. **Execute:** Assign subtasks to `panda_dev` / `lion_dev`.
+3. **Validate + Guard (parallel):** Spawn `chicken_tester` AND `zoo_keeper` together after implementation.
+4. **Finish:** Provide a brief summary of work to the user.
+
+---
+
+## Zoo Keeper Auto-Trigger
+
+Spawn `zoo_keeper` automatically when:
+- A task or milestone is completed (post-implementation security + cleanup scan).
+- The conversation has run for many turns (context optimization).
+- Before committing code (secret detection scan).
