@@ -1,8 +1,4 @@
 {
-  "statusLine": {
-    "type": "command",
-    "command": "~/.claude/statusline.sh"
-  },
   "permissions": {
     "allow": [
       "Bash(git commit*)",
@@ -36,9 +32,26 @@
       "Bash(git push *)"
     ]
   },
+  "statusLine": {
+    "type": "command",
+    "command": "~/.claude/statusline.sh"
+  },
   "enabledPlugins": {
     "typescript-lsp@claude-plugins-official": true,
-    "playwright@claude-plugins-official": false
+    "playwright@claude-plugins-official": false,
+    "rust-analyzer-lsp@claude-plugins-official": true
+  },
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "afplay /System/Library/Sounds/Glass.aiff"
+          }
+        ]
+      }
+    ]
   },
   "effortLevel": "low",
   "skipDangerousModePermissionPrompt": true
