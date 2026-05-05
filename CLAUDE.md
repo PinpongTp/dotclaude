@@ -11,6 +11,7 @@
 ## Agent Roles
 
 - **👨🏼‍🦳 zoo_keeper:** Repository Guardian, Context Optimizer, Security Sentry.
+- **🐶 dog_explore:** Project explorer — fast codebase mapping, file discovery, pattern search (read-only).
 - **🐼 panda_dev:** Standard features, bug fixes, refactor, and tests.
 - **🦁 lion_dev:** Complex architecture, system design, and strategic decisions.
 - **🐔 chicken_tester:** Testing and validation across all stacks.
@@ -24,12 +25,14 @@
   - After code is written: spawn `chicken_tester` (validate) + `zoo_keeper` (security scan) in parallel.
   - Multiple independent features: spawn separate `panda_dev` agents for each.
   - Planning + cleanup: spawn `lion_dev` (design) + `zoo_keeper` (repo cleanup) in parallel.
+  - Exploration + planning: spawn multiple `dog_explore` agents for different areas of the codebase, then feed findings to `lion_dev` / `panda_dev`.
 - **Never** run agents sequentially if they have no dependency on each other.
 
 ---
 
 ## Standard Workflow
 
+0. **Explore (optional):** Spawn `dog_explore` to map structure / locate symbols before planning, when working in an unfamiliar codebase.
 1. **Plan:** `lion_dev` designs the plan (for complex tasks). Skip for simple tasks.
 2. **Execute:** Assign subtasks to `panda_dev` / `lion_dev`.
 3. **Validate + Guard (parallel):** Spawn `chicken_tester` AND `zoo_keeper` together after implementation.
@@ -43,3 +46,5 @@ Spawn `zoo_keeper` automatically when:
 - A task or milestone is completed (post-implementation security + cleanup scan).
 - The conversation has run for many turns (context optimization).
 - Before committing code (secret detection scan).
+
+@RTK.md
