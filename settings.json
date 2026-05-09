@@ -68,7 +68,9 @@
     "playwright@claude-plugins-official": false,
     "rust-analyzer-lsp@claude-plugins-official": true
   },
-  "effortLevel": "low",
+  "effortLevel": "medium",
   "skipDangerousModePermissionPrompt": true,
+  "theme": "light-ansi",
+  "agentPushNotifEnabled": true,
   "skipAutoPermissionPrompt": true
 }
