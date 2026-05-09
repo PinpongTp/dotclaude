@@ -23,3 +23,15 @@ projects/
 
 # Plugins
 plugins/
+
+# Local overrides & backups
+.claude/
+settings.local.json
+settings.json.bak
+
+# Runtime caches & state
+.last-cleanup
+mcp-needs-auth-cache.json
+stats-cache.json
+telemetry/
+dashboard/logs/
