@@ -5,23 +5,39 @@
   "permissions": {
     "allow": [
       "Bash(git commit*)",
+      "Bash(rtk git commit*)",
       "Bash(git add *)",
+      "Bash(rtk git add *)",
       "Bash(git * main)",
+      "Bash(rtk git * main)",
       "Bash(* --version)",
       "Bash(* --help *)",
       "Bash(npm run *)",
+      "Bash(rtk npm run *)",
       "Bash(npm install *)",
+      "Bash(rtk npm install *)",
       "Bash(npm i *)",
+      "Bash(rtk npm i *)",
       "Bash(npm test *)",
+      "Bash(rtk npm test *)",
       "Bash(jest *)",
+      "Bash(rtk jest *)",
       "Bash(npm run test:*)",
+      "Bash(rtk npm run test:*)",
       "Bash(docker run *)",
+      "Bash(rtk docker run *)",
       "Bash(docker build *)",
+      "Bash(rtk docker build *)",
       "Bash(docker compose *)",
+      "Bash(rtk docker compose *)",
       "Bash(psql * select *)",
+      "Bash(rtk psql * select *)",
       "Bash(psql * SELECT *)",
+      "Bash(rtk psql * SELECT *)",
       "Bash(cd * npx nest build *)",
-      "Bash(cd * npx next build *)"
+      "Bash(rtk cd * npx nest build *)",
+      "Bash(cd * npx next build *)",
+      "Bash(rtk cd * npx next build *)"
     ],
     "deny": [
       "Bash(rm -rf *)",
@@ -56,6 +72,9 @@
     "playwright@claude-plugins-official": false,
     "rust-analyzer-lsp@claude-plugins-official": true
   },
-  "effortLevel": "low",
-  "skipDangerousModePermissionPrompt": true
+  "effortLevel": "medium",
+  "skipDangerousModePermissionPrompt": true,
+  "theme": "light-ansi",
+  "agentPushNotifEnabled": true,
+  "skipAutoPermissionPrompt": true
 }
