@@ -5,16 +5,18 @@
 - **Language:** User speaks Thai, but all **agent-to-agent communication and technical outputs must be in English**.
 - **Error Recovery:** If an agent hits the same error >3 times, stop and report.
 - **Format:** Always use full file paths and Conventional Commits.
+- **Agent First:** Always prefer delegating work to subagents instead of executing directly. For multi-step or cross-domain tasks, **orchestrate an agent team** (spawn multiple specialized agents in parallel via `TeamCreate` or coordinated `Agent` calls) rather than working solo. The main thread should act as an orchestrator — plan, delegate, and synthesize.
+- **Skip-explore exception:** When target file(s) are known and ≤3, just Read them. Use `dog_explore` only for: unknown regions, cross-cutting edits (rename / signature / schema), or bugs in unfamiliar code.
 
 ---
 
 ## Agent Roles
 
-- **👨🏼‍🦳 zoo_keeper:** Repository Guardian, Context Optimizer, Security Sentry.
-- **🐶 dog_explore:** Project explorer — fast codebase mapping, file discovery, pattern search (read-only).
-- **🐼 panda_dev:** Standard features, bug fixes, refactor, and tests.
-- **🦁 lion_dev:** Complex architecture, system design, and strategic decisions.
-- **🐔 chicken_tester:** Testing and validation across all stacks.
+- **👨🏼‍🦳zoo_keeper:** Repository Guardian, Context Optimizer, Security Sentry.
+- **🐶dog_explore:** Project explorer — fast codebase mapping, file discovery, pattern search (read-only).
+- **🐼panda_dev:** Standard features, bug fixes, refactor, and tests.
+- **🦁lion_dev:** Complex architecture, system design, and strategic decisions.
+- **🐔chicken_tester:** Testing and validation across all stacks.
 
 ---
 
@@ -43,6 +45,7 @@
 ## Zoo Keeper Auto-Trigger
 
 Spawn `zoo_keeper` automatically when:
+
 - A task or milestone is completed (post-implementation security + cleanup scan).
 - The conversation has run for many turns (context optimization).
 - Before committing code (secret detection scan).
