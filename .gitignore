@@ -17,6 +17,7 @@ backups/
 # Plans & tasks (conversation-scoped)
 plans/
 tasks/
+teams/
 
 # Projects (local state)
 projects/
