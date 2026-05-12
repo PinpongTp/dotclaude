@@ -40,6 +40,42 @@ Examples:
 
 ---
 
+## Model Selection (mandatory)
+
+**ALWAYS specify the `model` parameter** when spawning agents via the Agent tool. Default inheritance = parent model = expensive when parent is Opus.
+
+| Agent task | Recommended model |
+|---|---|
+| `dog_explore` (search/map code) | `haiku` |
+| `panda_dev` (CRUD / mechanical changes) | `sonnet` |
+| `chicken_tester` (E2E scenarios) | `sonnet` |
+| `zoo_keeper` (audit / cleanup) | `sonnet` |
+| `lion_dev` (architecture / complex bugs) | `opus` |
+
+Only escalate to `opus` when reasoning depth is genuinely required (system design, ambiguous root-cause analysis, security-sensitive logic). Saves ~5x cost vs always-Opus default.
+
+---
+
+## Permission Mode (mandatory when spawning agents)
+
+**ALWAYS pass `mode` parameter** to the Agent tool. Default mode triggers user approval prompts for every Edit/Write on existing files — frustrating UX, especially with parallel teammates.
+
+| Use case | `mode` |
+|---|---|
+| Trusted teammate doing routine implementation (panda_dev/lion_dev with clear task) | `acceptEdits` |
+| Read-only / analysis (dog_explore, zoo_keeper) | `auto` |
+| Risky/destructive work (rm, force-push, prod ops) | `default` (force user prompt) |
+
+`acceptEdits` auto-accepts Edit/Write on project files without prompting the user — the right choice for trusted teammates. (Earlier sessions tried `bypassPermissions` but the harness consistently launches child agents with `--permission-mode auto` regardless of what's passed; `acceptEdits` is the user's preferred working mode for spawned teammates.)
+
+`auto` allows tool calls but still respects file-edit safety prompts — fine for read-only agents.
+
+When in doubt: `acceptEdits` for implementation work, `auto` for everything else. Never leave `mode` unset on spawn.
+
+**Critical: keep agent file references INSIDE the project cwd.** `bypassPermissions` only covers paths within the spawned agent's working directory. References to `~/.claude/plans/`, `~/.claude/memory/`, or any path outside project cwd will trigger user permission prompts every time — even with `bypassPermissions` set. Embed the full plan/spec content directly into the task description (TaskCreate body) instead of pointing the agent to external files. Only project files (src/, bruno/, etc.) are safe to reference.
+
+---
+
 ## Clarification Before Implementation
 
 For any new API/feature design where scope is ambiguous, **use `AskUserQuestion` BEFORE coding** to confirm:
@@ -116,14 +152,9 @@ Teammate context is expensive — every turn re-sends the full conversation. Man
 - **Skip BACKLOG.md updates unless asked.** (Auto-memory for user/feedback/project still applies as normal — that system is separate.)
 - **Don't re-verify completed work** by reading files the teammate already described.
 
-### When user says "economy mode" / "ประหยัด"
-- Keep responses ≤3 short lines.
-- No tool calls unless strictly required to proceed.
-- No tables, no code blocks unless explicitly asked.
-- Wait silently on idle notifications.
-
 ### Shutdown discipline
 - Close the team with `TeamDelete` when the epic is done.
 - Write surviving knowledge to `BACKLOG.md` / project memory, not to lingering tasks.
 
-@RTK.md
+@rules/RTK.md
+@rules/conversation.md
