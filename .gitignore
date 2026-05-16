@@ -37,5 +37,6 @@ stats-cache.json
 telemetry/
 dashboard/logs/
 
-# Hook runtime logs
-debug/notifications.log
+# Debug dir — ignore everything except shell scripts
+debug/*
+!debug/*.sh
