@@ -156,5 +156,6 @@ Teammate context is expensive — every turn re-sends the full conversation. Man
 - Close the team with `TeamDelete` when the epic is done.
 - Write surviving knowledge to `BACKLOG.md` / project memory, not to lingering tasks.
 
-@rules/RTK.md
 @rules/conversation.md
+
+@RTK.md
