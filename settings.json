@@ -32,7 +32,14 @@
       "Bash(* ; *)",
       "Bash(* & *)",
       "Bash(* `*` *)",
-      "Bash(git push *)"
+      "Bash(git push *)",
+      "Read(**/.env)",
+      "Read(**/.env.*)",
+      "Read(**/secrets/**)",
+      "Read(**/*.pem)",
+      "Read(**/*id_rsa*)",
+      "Bash(printenv:*)",
+      "Bash(env:*)"
     ],
     "defaultMode": "auto"
   },
@@ -42,7 +49,27 @@
         "hooks": [
           {
             "type": "command",
-            "command": "afplay /System/Library/Sounds/Glass.aiff"
+            "command": "say -v 'Sandy (Japanese (Japan))' 'all done'"
+          }
+        ]
+      }
+    ],
+    "Notification": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/hooks/notify-with-log.sh"
+          }
+        ]
+      }
+    ],
+    "SubagentStop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "afplay /System/Library/Sounds/Tink.aiff"
           }
         ]
       }
@@ -57,6 +84,17 @@
           }
         ]
       }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/hooks/format.sh"
+          }
+        ]
+      }
     ]
   },
   "statusLine": {
@@ -66,11 +104,13 @@
   "enabledPlugins": {
     "typescript-lsp@claude-plugins-official": true,
     "playwright@claude-plugins-official": false,
-    "rust-analyzer-lsp@claude-plugins-official": true
+    "rust-analyzer-lsp@claude-plugins-official": false
   },
   "effortLevel": "medium",
   "skipDangerousModePermissionPrompt": true,
-  "theme": "light-ansi",
+  "theme": "dark-daltonized",
+  "autoCompactEnabled": false,
+  "remoteControlAtStartup": false,
   "agentPushNotifEnabled": true,
   "skipAutoPermissionPrompt": true
 }

@@ -36,3 +36,6 @@ mcp-needs-auth-cache.json
 stats-cache.json
 telemetry/
 dashboard/logs/
+
+# Hook runtime logs
+debug/notifications.log
