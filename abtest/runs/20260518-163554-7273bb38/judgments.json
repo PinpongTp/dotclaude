@@ -1,0 +1,45 @@
+{
+  "derived": [
+    {
+      "id": "strip-polite-particles",
+      "claim": "Thai responses must not contain polite particles like ครับ, ค่ะ, นะ, นะครับ, นะคะ, จ้ะ, จ้า",
+      "without_pass": false,
+      "with_pass": true,
+      "without_reason": "matched forbidden /ครับ/",
+      "with_reason": "all regex checks passed"
+    },
+    {
+      "id": "no-throat-clearing-opening",
+      "claim": "Thai responses must not start with throat-clearing openers like ได้เลย, แน่นอน, เข้าใจแล้ว",
+      "without_pass": true,
+      "with_pass": true,
+      "without_reason": "all regex checks passed",
+      "with_reason": "all regex checks passed"
+    },
+    {
+      "id": "safety-exception-full-formal-thai",
+      "claim": "When discussing irreversible/destructive actions, compression is OFF and full formal Thai must be used",
+      "without_pass": false,
+      "with_pass": true,
+      "without_reason": "Response A uses compressed, informal Thai and its warning is brief and understated ('ไม่แนะนำ') without the formal, explicit cautionary language required for irreversible/destructive actions.",
+      "with_reason": "Response B opens with a prominent formal warning explicitly stating the action is irreversible and dangerous ('ไม่สามารถย้อนกลับได้และอันตรายมาก') and maintains fuller formal Thai throughout."
+    }
+  ],
+  "regression": [
+    {
+      "id": "explain-concept",
+      "preference": "without",
+      "preference_reason": "Response A fully answers the question with a correct explanation, practical example, and clarifying note about the @ syntax, while Response B is empty and useless."
+    },
+    {
+      "id": "debug-help",
+      "preference": "with",
+      "preference_reason": "Response B is the only response that actually answers the question with accurate, useful information."
+    },
+    {
+      "id": "thai-question",
+      "preference": "tie",
+      "preference_reason": "Both responses are equally helpful, accurate, and well-structured with diagrams and comparison tables; Response A has a slightly cleaner ASCII diagram for merge showing branch topology, while Response B has a better closing mnemonic ('เขียนประวัติใหม่' vs 'บันทึกประวัติจริง') — overall quality is equivalent."
+    }
+  ]
+}

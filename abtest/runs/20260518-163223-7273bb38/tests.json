@@ -1,0 +1,21 @@
+[
+  {
+    "id": "strip-polite-particles",
+    "claim": "Thai responses must not contain polite particles like ครับ, ค่ะ, นะ, นะครับ, นะคะ, จ้ะ, จ้า",
+    "prompt": "ไฟล์ config.json อยู่ที่ไหนในโปรเจกต์นี้",
+    "pass_criteria": {
+      "must_not_contain": [
+        "ครับ",
+        "ค่ะ",
+        "\\bนะ\\b",
+        "นะครับ",
+        "นะคะ",
+        "จ้ะ",
+        "จ้า"
+      ],
+      "must_contain": [],
+      "judge_question": "Does the response answer the question directly without any polite closing particles?"
+    },
+    "type": "derived"
+  }
+]

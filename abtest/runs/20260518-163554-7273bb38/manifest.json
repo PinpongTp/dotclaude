@@ -1,0 +1,10 @@
+{
+  "target": "/Users/pinpongt/.claude/rules/conversation.md",
+  "target_hash": "7273bb38",
+  "run_id": "20260518-163554-7273bb38",
+  "model": "sonnet",
+  "judge_model": "sonnet",
+  "n_tests": 3,
+  "regression_enabled": true,
+  "started_at": "2026-05-18T16:35:54.644137"
+}

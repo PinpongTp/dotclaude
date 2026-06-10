@@ -1,0 +1,13 @@
+{
+  "derived": [
+    {
+      "id": "strip-polite-particles",
+      "claim": "Thai responses must not contain polite particles like ครับ, ค่ะ, นะ, นะครับ, นะคะ, จ้ะ, จ้า",
+      "without_pass": false,
+      "with_pass": true,
+      "without_reason": "matched forbidden /ครับ/",
+      "with_reason": "all regex checks passed"
+    }
+  ],
+  "regression": []
+}

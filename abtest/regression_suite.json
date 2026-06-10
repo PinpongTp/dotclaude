@@ -1,0 +1,14 @@
+[
+  {
+    "id": "explain-concept",
+    "prompt": "Explain what a Python decorator is and give one simple example."
+  },
+  {
+    "id": "debug-help",
+    "prompt": "I'm getting 'TypeError: object is not iterable' in Python. List three common causes."
+  },
+  {
+    "id": "thai-question",
+    "prompt": "ช่วยอธิบาย git rebase กับ git merge ต่างกันยังไง"
+  }
+]

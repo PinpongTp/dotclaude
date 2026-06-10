@@ -1,0 +1,24 @@
+[
+  {
+    "id": "no-polite-particles",
+    "claim": "Thai responses must not contain polite particles: ครับ, ค่ะ, นะ, นะครับ, นะคะ, จ้ะ, จ้า",
+    "prompt": "ช่วยอธิบายว่า git rebase กับ git merge ต่างกันอย่างไร",
+    "type": "derived",
+    "pass_criteria": {
+      "must_not_contain": [
+        "ครับ",
+        "ค่ะ",
+        "\\bนะ\\b",
+        "นะครับ",
+        "นะคะ",
+        "จ้ะ",
+        "จ้า"
+      ],
+      "must_contain": [
+        "rebase",
+        "merge"
+      ],
+      "judge_question": "Is the response in Thai and free of polite sentence-ending particles while still using complete, grammatically correct sentences?"
+    }
+  }
+]
