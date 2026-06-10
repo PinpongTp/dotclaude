@@ -76,17 +76,6 @@
           }
         ]
       }
-    ],
-    "PostToolUse": [
-      {
-        "matcher": "Edit|Write|MultiEdit",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "~/.claude/hooks/format.sh"
-          }
-        ]
-      }
     ]
   },
   "statusLine": {
@@ -98,7 +87,9 @@
     "playwright@claude-plugins-official": false,
     "rust-analyzer-lsp@claude-plugins-official": false
   },
+  "extraKnownMarketplaces": {},
   "effortLevel": "medium",
+  "advisorModel": "opus",
   "skipDangerousModePermissionPrompt": true,
   "theme": "dark-daltonized",
   "autoCompactEnabled": false,
