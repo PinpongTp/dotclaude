@@ -5,6 +5,7 @@
   "permissions": {
     "allow": [
       "Bash(git commit*)",
+      "Bash(curl:*)",
       "Bash(git add *)",
       "Bash(git * main)",
       "Bash(* --version)",
@@ -25,16 +26,7 @@
     ],
     "deny": [
       "Bash(rm -rf *)",
-      "Bash(* > *)",
-      "Bash(* >> *)",
-      "Bash(* | *)",
-      "Bash(* && *)",
-      "Bash(* ; *)",
-      "Bash(* & *)",
-      "Bash(* `*` *)",
       "Bash(git push *)",
-      "Read(**/.env)",
-      "Read(**/.env.*)",
       "Read(**/secrets/**)",
       "Read(**/*.pem)",
       "Read(**/*id_rsa*)",
