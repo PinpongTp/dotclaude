@@ -4,9 +4,11 @@
   },
   "permissions": {
     "allow": [
-      "Bash(git commit*)",
+      "Bash(git status*)",
+      "Bash(git diff*)",
+      "Bash(git log*)",
+      "Bash(gh pr*)",
       "Bash(curl:*)",
-      "Bash(git add *)",
       "Bash(git * main)",
       "Bash(* --version)",
       "Bash(* --help *)",
@@ -35,7 +37,6 @@
     ],
     "defaultMode": "auto"
   },
-  "model": "opus[1m]",
   "hooks": {
     "Stop": [
       {
