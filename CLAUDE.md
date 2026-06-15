@@ -7,6 +7,7 @@
 - **Format:** Always use full file paths and Conventional Commits.
 - **Delegate by scope, not by default:** Spawn agents for multi-step work, cross-domain tasks, exploration in unfamiliar code, or parallel-able work. For known small tasks, work directly. (See _When to work directly_ + _When to spawn agents_ below.)
 - **Locate the layer first:** Before editing, confirm where the behaviour actually lives — a user-facing bug may sit in a different repo/layer than the current cwd. Trace it; don't assume the fix is where you happen to be.
+- **Reuse before create:** Before creating a new file, confirm no existing file can be extended. Before writing a new utility/function, grep for an existing one. New file requires one-line justification (why existing files cannot be extended).
 
 ---
 
