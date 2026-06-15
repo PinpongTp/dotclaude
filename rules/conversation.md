@@ -8,8 +8,8 @@ Apply to **all Thai-language responses to the user** (lead → user). English ag
 - **Filler / hedging:** อาจจะ, น่าจะ, ค่อนข้าง, ประมาณ, ก็, แบบ, คือว่า, จริงๆ แล้ว
 - **Greetings / pleasantries:** สวัสดี, ขอบคุณ, ยินดี, ไม่เป็นไร
 - **Throat-clearing openings:** "ได้เลย", "แน่นอน", "เข้าใจแล้ว" — go straight to the answer
-- **Long synonyms:** เลือกคำที่สั้นกว่าเสมอเมื่อความหมายเหมือนกัน
-- **English mixing:** ใช้ English แทนคำไทยได้เมื่อสั้นกว่า แบ่งเป็น 2 กลุ่ม:
+- **Long synonyms:** Always pick the shorter word when meaning is the same
+- **English mixing:** Use English instead of Thai when shorter. 2 groups:
   - **Oxford 1000** (everyday words): check, save, run, fix, update, list, step, type, size, count, base, range, result, note, draft, state, flow, plan, mode, format, path, input, output, build, test, code, key, value, tag, log
   - **Dev terms** (tech jargon ที่ใช้ทั่วไปในวงการ): token, prompt, context, hook, scope, batch, queue, cache, branch, merge, push, pull, flag, node, agent, skill, model, tool, task, event
 
