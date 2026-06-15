@@ -110,16 +110,12 @@ When a conclusion depends on behaviour you haven't observed — an external serv
 
 ---
 
-## Commit Scoping Discipline
+## Commit Workflow
 
-When user requests `commit`:
+Commit discipline (session-scoping, staging hygiene, conventional-commit grouping) is owned by the `git-tools` plugin (`spw-marketplace`). Invoke via:
 
-- Commit **ONLY files touched in current session** — cross-reference with conversation history.
-- Skip pre-existing modifications that weren't edited this session.
-- If unsure about a modified file, **ask the user** before staging.
-- Group changes by topic (separate `feat:`, `chore:`, `fix:` commits) — never bundle unrelated changes.
-- Stage with explicit file paths, never `git add -A` or `git add .`.
-- **One file, mixed work:** when a file holds both your session edits and pre-existing changes, stage only your hunks with `git add -p` and **verify `git diff --cached` before committing** — never `git add <file>` the whole thing blind.
+- `/commit` — atomic conventional commits
+- `/commit-ai` — same, with AI attribution footer
 
 ---
 
