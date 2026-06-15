@@ -1,8 +1,8 @@
 ---
 name: handoff
 description: Compact the current conversation into a handoff document for another agent to pick up. Use when user says "/handoff" or asks to prepare a handoff for a fresh session.
-argument-hint: "What will the next session be used for?"
-allowed-tools: Write, Read, Bash, Grep, Glob
+argument-hint: "What will the next session focus on?"
+allowed-tools: Write, Read, Bash
 ---
 
 # Handoff
@@ -11,28 +11,35 @@ Write a handoff document summarising the current conversation so a fresh agent c
 
 ## Where to write
 
-Save to the OS temp directory — **not** the project workspace. Resolve via `${TMPDIR:-/tmp}` on macOS/Linux. Filename: `handoff-<YYYYMMDD-HHMMSS>.md`. Print the absolute path at the end.
+Save to `.claude/HANDOFF.md` in the **current project directory** (overwrite if exists — only the latest matters).
 
-## What to include
+After writing, ensure `HANDOFF.md` is listed in `.claude/.gitignore`. If `.claude/.gitignore` does not exist, create it. If `HANDOFF.md` is not already in it, append the entry.
 
-1. **Goal** — one paragraph: what the user is ultimately trying to achieve.
-2. **Status** — done / in-progress / blocked, with file paths or PR/branch links.
-3. **Key decisions made** — with the *why*, not just the *what*. Decisions made silently are decisions lost.
-4. **Open questions** — anything the next session will need to resolve.
+```bash
+# Check/create .claude/.gitignore
+grep -q "^HANDOFF.md$" .claude/.gitignore 2>/dev/null || echo "HANDOFF.md" >> .claude/.gitignore
+```
+
+## What to include (≤30 lines total)
+
+1. **Goal** — one sentence: what the user is ultimately trying to achieve.
+2. **Status** — done / in-progress / blocked, with file paths or commit refs.
+3. **Key decisions** — with the *why*. Decisions made silently are decisions lost.
+4. **Open questions** — anything the next session needs to resolve.
 5. **Next steps** — concrete first actions, ordered.
-6. **Suggested skills** — which skills the next agent should invoke (e.g. `/tdd`, `/diagnose`, `/grill-with-docs`).
-7. **Suggested agents** — when delegation is obvious, name the agent (`🐶dog_explore` for unfamiliar regions, `🐼panda_dev` for mechanical work, `🦁lion_dev` for architecture, `🐔chicken_tester` for validation, `👨🏼‍🦳zoo_keeper` for cleanup/security).
+6. **Suggested skills** — e.g. `/tdd`, `/diagnose`, `/handoff-check`.
+7. **Suggested agents** — `🐶dog_explore`, `🐼panda_dev`, `🦁lion_dev`, `🐔chicken_tester`, `👨🏼‍🦳zoo_keeper`.
 
 ## What to leave out
 
-- **Do not duplicate** content already in PRDs, plans, ADRs, issues, commits, or diffs. Reference them by path/URL.
-- **Redact secrets** — API keys, passwords, tokens, PII. If any appeared in the conversation, omit them.
-- **No narration** of every tool call. Summarise the *state of the world*, not the transcript.
+- Don't duplicate content in commits, diffs, or existing docs — reference by path.
+- Redact secrets — API keys, passwords, tokens, PII.
+- No narration of tool calls. State of the world only.
 
 ## Argument handling
 
-If the user passed an argument after `/handoff`, treat it as the focus of the next session and tailor the doc accordingly (e.g. `/handoff continue auth refactor` → bias toward auth files, decisions, and next steps).
+If the user passed an argument, treat it as the focus of the next session and tailor accordingly (e.g. `/handoff continue auth refactor` → bias toward auth context).
 
 ## Output to user
 
-Confirm in Thai (compressed): path + one-line summary of what's in it.
+Confirm in Thai (compressed): path written + one-line summary of content.
