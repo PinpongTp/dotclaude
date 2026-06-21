@@ -43,7 +43,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "say -v 'Sandy (Japanese (Japan))' 'all done'"
+            "command": "~/.claude/hooks/stop-announce.sh Stop"
           }
         ]
       }
