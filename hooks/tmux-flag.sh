@@ -7,8 +7,8 @@
 pane="${TMUX_PANE:-}"
 [ -z "$pane" ] && exit 0
 
-# Yellow "!" marker, attached directly to the name (no space).
-MARK='#[fg=yellow]!#[default]'
+# Yellow bold "(!)" marker, attached directly to the name (no space).
+MARK='#[fg=yellow,bold](!)#[default]'
 
 # Already looking at this window? Nothing to flag.
 [ "$(tmux display-message -p -t "$pane" '#{window_active}')" = "1" ] && exit 0

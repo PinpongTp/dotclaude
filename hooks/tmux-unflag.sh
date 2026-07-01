@@ -6,7 +6,7 @@
 pane="${TMUX_PANE:-}"
 [ -z "$pane" ] && exit 0
 
-MARK='#[fg=yellow]!#[default]'
+MARK='#[fg=yellow,bold](!)#[default]'
 
 name=$(tmux display-message -p -t "$pane" '#W')
 case "$name" in
