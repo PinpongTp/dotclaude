@@ -44,6 +44,20 @@
           {
             "type": "command",
             "command": "~/.claude/hooks/stop-announce.sh Stop"
+          },
+          {
+            "type": "command",
+            "command": "~/.claude/hooks/tmux-flag.sh"
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/hooks/tmux-unflag.sh"
           }
         ]
       }
@@ -54,6 +68,10 @@
           {
             "type": "command",
             "command": "~/.claude/hooks/notify-with-log.sh"
+          },
+          {
+            "type": "command",
+            "command": "~/.claude/hooks/tmux-flag.sh"
           }
         ]
       }
